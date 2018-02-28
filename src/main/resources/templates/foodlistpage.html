@@ -6,9 +6,21 @@
     <title>Title</title>
 </head>
 <body>
+<table>
+    <tr>
+        <th>Item</th>
+        <th>Serving size</th>
+        <th>Type</th>
+    </tr>
+    <tr th:each="foodItems : ${foodlist}">
+        <td th:text="${foodItems.itemName}"></td>
+        <td th:text="${foodItems.servingSize}"></td>
+        <td th:text="${foodItems.itemCategory}"></td>
+        <
+    </tr>
+</table>
 
-
-<div class="content">
+<!--<div class="content">
     <div class="container-fluid">
 
         <div class="row">
@@ -16,7 +28,7 @@
                 <div class="card">
 
                     <div class="toolbar">
-                        <!--        Here you can write extra buttons/actions for the toolbar              -->
+                        &lt;!&ndash;        Here you can write extra buttons/actions for the toolbar              &ndash;&gt;
                     </div>
 
                     <table id="bootstrap-table" class="table">
@@ -38,12 +50,12 @@
 
                         </tbody>
                     </table>
-                </div><!--  end card  -->
-            </div> <!-- end col-md-12 -->
-        </div> <!-- end row -->
+                </div>&lt;!&ndash;  end card  &ndash;&gt;
+            </div> &lt;!&ndash; end col-md-12 &ndash;&gt;
+        </div> &lt;!&ndash; end row &ndash;&gt;
 
     </div>
-</div>
+</div>-->
 
 
 </body>

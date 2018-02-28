@@ -18,7 +18,7 @@ public class FoodItems {
     // Constructors
 
 
-    public FoodItems(String itemName, Integer servingSize, String itemCategory, String appUser) {
+    public FoodItems(String itemName, Integer servingSize, String itemCategory, AppUser appUser) {
         this.itemName = itemName;
         this.servingSize = servingSize;
         this.itemCategory = itemCategory;
@@ -62,14 +62,15 @@ public class FoodItems {
     }
 
     // Connection to AppUser
-    @ManyToOne()
-    private String appUser;
+    @ManyToOne
+    @JoinColumn
+    private AppUser appUser;
 
-    public String getAppUser() {
+    public AppUser getAppUser() {
         return appUser;
     }
 
-    public void setAppUser(String appUser) {
+    public void setAppUser(AppUser appUser) {
         this.appUser = appUser;
     }
 }

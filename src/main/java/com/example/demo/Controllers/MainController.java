@@ -45,12 +45,13 @@ public class MainController {
     @GetMapping("/register")
     public String registerUser(Model model)
     {
-        model.addAttribute("newUser",new AppUser());
+        AppUser user= new AppUser();
+        /*model.addAttribute("newUser",new AppUser());*/
         return "registration";
     }
 
     @PostMapping("/register")
-    public String addNewUser(@Valid @ModelAttribute("NewUser") AppUser newUser,  BindingResult result, Model model)
+    public String addNewUser(@Valid @ModelAttribute("newUser") AppUser newUser,  BindingResult result, Model model)
     {
 
         if(result.hasErrors())
@@ -111,10 +112,11 @@ public class MainController {
         if (result.hasErrors()){
             return "foodaddpage";
         }
+        AppUser appUser = appUserRepository.findAppUserByAppUsername(authentication.getName());
+        foodItems.setAppUser(appUser);
         foodItemsRepository.save(foodItems);
-        AppUser user = appUserRepository.findAppUserByAppUsername(authentication.getName());
-        user.addFoodItems(foodItems);
-        appUserRepository.save(user);
+        appUser.addFoodItems(foodItems);
+        appUserRepository.save(appUser);
         return "redirect:/foodlist";
     }
 
@@ -131,14 +133,15 @@ public class MainController {
         if (result.hasErrors()){
             return "foodaddpage";
         }
+        AppUser appUser = appUserRepository.findOne(id);
+        foodItems.setAppUser(appUser);
         foodItemsRepository.save(foodItems);
-        AppUser user = appUserRepository.findOne(id);
-        user.addFoodItems(foodItems);
-        appUserRepository.save(user);
+        appUser.addFoodItems(foodItems);
+        appUserRepository.save(appUser);
         return "";
     }
 
-    @PostMapping("/searcfood")
+    @PostMapping("/searchfood")
     public String showSearchOrgResults(HttpServletRequest request, Model model)
     {
         //Get the search string from the result form

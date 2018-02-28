@@ -29,6 +29,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         http
 
                 .authorizeRequests()
+                .antMatchers("/","/register","/userdetail/**","/addadmin/**",
+                        "/change_RSVP_status/**","/foodlist","/addfood","/processfood",
+                        "/addedfood/**","/processaddedfood/**","/searchfood").permitAll()
                 .anyRequest().authenticated();
 
         http

@@ -6,6 +6,18 @@
     <title>Title</title>
 </head>
 <body>
-
+<table>
+    <tr>
+        <th>Item</th>
+        <th>Serving size</th>
+        <th>Type</th>
+    </tr>
+    <tr th:each="foodItems : ${profile.getFoodItemsList()}">
+        <td th:text="${foodItems.itemName}"></td>
+        <td th:text="${foodItems.servingSize}"></td>
+        <td th:text="${foodItems.itemCategory}"></td>
+        <
+    </tr>
+</table>
 </body>
 </html>
